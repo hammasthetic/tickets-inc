@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { Button, Image, Snippet } from '@nextui-org/react'
 import { prepareContractCall, PreparedTransaction, toTokens } from 'thirdweb'
 import { useActiveAccount, useSendAndConfirmTransaction, useWalletBalance } from 'thirdweb/react'
-import ConnectWallet from './ConnectWallet'
 import { polygonAmoy } from 'thirdweb/chains'
 import { thirdWebClient } from '@/app/layout'
 import { getTicketsContractByAddress } from '@/utils/contracts'
@@ -21,7 +20,7 @@ export type EventData = {
     image:string,
     symbol:string
 }
-   
+
 function EventCard({event,reload,setReload}:{event:Event,reload:boolean,setReload:any}) {
     const [eventDetails, setEventDetails] = React.useState<EventData>()
     const activeAccount=useActiveAccount()
@@ -49,7 +48,7 @@ function EventCard({event,reload,setReload}:{event:Event,reload:boolean,setReloa
                 params: [String(eventDetails?.name)],
             })
             await sendBuyTransaction(preparedTransaction as PreparedTransaction,{
-                onSuccess(data,variables,context){
+                onSuccess(){
                     alert('Ticket bought successfully')
                     setReload(!reload)
                 }
@@ -57,6 +56,7 @@ function EventCard({event,reload,setReload}:{event:Event,reload:boolean,setReloa
             })
         }
         catch(e){
+            console.log(e)
             alert('Error buying ticket')
         }
        

@@ -1,7 +1,6 @@
-'use client'
+'use client';
 import { thirdWebClient } from '@/app/layout';
-import { Button, Modal, ModalBody, ModalContent, Snippet, useDisclosure } from '@nextui-org/react'
-import React from 'react'
+import { Button, Modal, ModalBody, ModalContent, useDisclosure } from '@nextui-org/react';
 import { polygonAmoy } from 'thirdweb/chains';
 import { ConnectEmbed, useActiveAccount, useActiveWallet, useWalletBalance } from 'thirdweb/react';
 import { createWallet } from 'thirdweb/wallets';

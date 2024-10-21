@@ -1,9 +1,9 @@
-import { type NextRequest, NextResponse } from "next/server";
-import { pinata } from "@/utils/config"
+import { NextResponse } from "next/server";
+import { pinata } from "@/utils/config";
 
 export const dynamic = "force-dynamic";
 
-export async function GET(req: NextRequest, res: NextResponse) {
+export async function GET() {
   try {
     const uuid = crypto.randomUUID();
     const keyData = await pinata.keys.create({

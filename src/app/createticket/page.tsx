@@ -1,9 +1,9 @@
 'use client'
-import { Button, Input } from '@nextui-org/react'
-import React from 'react'
+import { Button, Input } from '@nextui-org/react';
+import React from 'react';
 import { pinata } from "@/utils/config";
 import { useSendAndConfirmTransaction } from 'thirdweb/react';
-import { prepareContractCall, PreparedTransaction, toTokens, toUnits } from 'thirdweb';
+import { prepareContractCall, PreparedTransaction, toUnits } from 'thirdweb';
 import { getTicketsContractByAddress } from '@/utils/contracts';
 import { ticketsContract } from '@/utils/contractsUrl';
 
@@ -16,7 +16,7 @@ function CreateTicketPage() {
     const [eventImage,setEventImage]=React.useState<File>()
     const [availableTickets,setAvailableTickets]=React.useState(0)
     const [uploading, setUploading] = React.useState(false);
-    const {mutateAsync:sendCreateEventTransaction,isPending:createEventPending}= useSendAndConfirmTransaction()
+    const {mutateAsync:sendCreateEventTransaction}= useSendAndConfirmTransaction()
 
 
     const uploadImage = async () => {
@@ -84,7 +84,7 @@ function CreateTicketPage() {
                         params:[eventName,eventSymbol,url,priceInWei,BigInt(availableTickets)]
                     })
                     await sendCreateEventTransaction(transaction as PreparedTransaction,{
-                        onSuccess(data,variable,context){
+                        onSuccess(){
                            
                             alert('Event created successfully')
                         }

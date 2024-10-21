@@ -1,7 +1,4 @@
-import { Button, Link, Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
-import { ConnectButton } from "thirdweb/react";
-import { thirdWebClient } from "./layout";
-import { polygonAmoy } from "thirdweb/chains";
+import { Link, Navbar, NavbarBrand, NavbarContent, NavbarItem } from "@nextui-org/react";
 import ConnectWallet from "@/components/ConnectWallet";
 
 export default function Header() {

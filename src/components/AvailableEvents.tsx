@@ -1,9 +1,8 @@
-'use client'
+'use client';
 import { getTicketsContractByAddress } from '@/utils/contracts'
 import { ticketsContract } from '@/utils/contractsUrl'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react';
 import { readContract, toTokens } from 'thirdweb'
-import { useReadContract } from 'thirdweb/react'
 import EventCard from './EventCard'
 
 function AvailableEvents() {
@@ -11,7 +10,7 @@ function AvailableEvents() {
     const [reload, setReload] = useState(false)
     const getContractValues = async () => {
         let i = 0
-        let fetchedEvents: any[] = [] // Temporary array to store fetched events
+        const fetchedEvents: any[] = [] // Temporary array to store fetched events
         
         while (true) {
             const event = await readContract({
